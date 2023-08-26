@@ -11,35 +11,38 @@ checkboxMenu.on("change", function (e) {
     : headerMenuContainer.toggleClass(["p-4", "top-[124px]"]);
 });
 
-const swiper = new Swiper(".swiper", {
-  slidesPerView: 3,
-  speed: 1000,
-  loopAdditionalSlides: 1,
-  slidesPerGroup: 1,
-  spaceBetween: 30,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    dynamicBullets: true,
-  },
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    100: {
-      slidesPerView: 1,
-      spaceBetween: 15,
+$('.swiper').each(function(index) {
+  console.log(index);
+  const swiper = new Swiper(index === 0 ? ".swiper-reviews" : ".swiper-news", {
+    slidesPerView: index === 0 ? 2 : 3,
+    speed: 1000,
+    loopAdditionalSlides: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true,
     },
-    460: {
-      slidesPerView: 2,
-      spaceBetween: 15,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
     },
-    960: {
-      slidesPerView: 3,
+    breakpoints: {
+      100: {
+        slidesPerView: 1,
+        spaceBetween: 15,
+      },
+      460: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+      },
+      960: {
+        slidesPerView: index === 0 ? 2 : 3,
+      },
     },
-  },
-});
+  });
+})
 
 const inputFiles = document.querySelector(".input-files");
 const files = document.querySelector(".block-files");

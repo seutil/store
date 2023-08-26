@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tailwind',
     'articles',
     'lawyer',
+    'reviews',
     'django_browser_reload',
 ]
 
