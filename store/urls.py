@@ -20,12 +20,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from lawyer.views import index
-from articles.views import render_articles
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('articles/', render_articles, name='articles'),
+    path('articles/', include('articles.urls', namespace='articles')),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 

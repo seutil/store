@@ -253,10 +253,10 @@
               class="header__menu-list flex lg:gap-10 md:gap-4 gap-2 justify-end md:pt-4 md:pl-5"
             >
               <li class="menu-item">
-                <a href="{% url 'index' %}" class="active">Главная</a>
+                <a href="{% url 'index' %}" class="{% if request.path == '/' %}active{% endif %}">Главная</a>
               </li>
               <li class="menu-item">
-                <a href="{% url 'articles' %}">О компании</a>
+                <a href="{% url 'articles:index' %}" class="{% if request.path == '/articles/' %}active{% endif %}">О компании</a>
               </li>
               <li class="menu-item"><a href="#">Услуги</a></li>
               <li class="menu-item"><a href="#">Практика</a></li>
