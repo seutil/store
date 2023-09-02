@@ -82,7 +82,7 @@
                                             <div class="review__author-rating flex">
                                                 {% with ''|center:5 as range %}
                                                     {% for _ in range %}
-                                                        {% if review.rating > forloop.counter %}
+                                                        {% if review.rating >= forloop.counter %}
                                                             <svg viewBox="0 0 24 24" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
                                                                 <defs>
                                                                 <style>.cls-2{stroke-linecap:round;stroke-linejoin:round; stroke: #4F8FF0; fill: #4F8FF0; opacity: 0.8;}</style>
@@ -158,3 +158,8 @@
     </section>
 </main>
 {% endblock content %}
+{% block scripts %}
+    {{block.super}}
+    <script src="{% static 'js/index.js'%}"></script>
+    <script src="{% static 'js/post_data.js'%}"></script>
+{% endblock scripts %}

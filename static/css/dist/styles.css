@@ -805,8 +805,16 @@ select{
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.visible{
+  visibility: visible;
+}
+
 .static{
   position: static;
+}
+
+.fixed{
+  position: fixed;
 }
 
 .absolute{
@@ -815,6 +823,14 @@ select{
 
 .relative{
   position: relative;
+}
+
+.sticky{
+  position: sticky;
+}
+
+.-right-16{
+  right: -4rem;
 }
 
 .top-0{
@@ -886,12 +902,36 @@ select{
   display: block;
 }
 
+.inline-block{
+  display: inline-block;
+}
+
+.inline{
+  display: inline;
+}
+
 .flex{
   display: flex;
 }
 
+.table{
+  display: table;
+}
+
 .grid{
   display: grid;
+}
+
+.contents{
+  display: contents;
+}
+
+.hidden{
+  display: none;
+}
+
+.h-10{
+  height: 2.5rem;
 }
 
 .h-5{
@@ -910,8 +950,16 @@ select{
   min-height: 100px;
 }
 
+.min-h-\[448px\]{
+  min-height: 448px;
+}
+
 .min-h-screen{
   min-height: 100vh;
+}
+
+.w-10{
+  width: 2.5rem;
 }
 
 .w-14{
@@ -950,8 +998,16 @@ select{
   flex-grow: 1;
 }
 
+.transform{
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .cursor-pointer{
   cursor: pointer;
+}
+
+.resize{
+  resize: both;
 }
 
 .appearance-none{
@@ -1074,6 +1130,11 @@ select{
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
+.bg-gray-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
 .bg-myBlack{
   --tw-bg-opacity: 1;
   background-color: rgb(34 34 34 / var(--tw-bg-opacity));
@@ -1086,6 +1147,10 @@ select{
 
 .bg-opacity-40{
   --tw-bg-opacity: 0.4;
+}
+
+.p-1{
+  padding: 0.25rem;
 }
 
 .p-3{
@@ -1234,9 +1299,29 @@ select{
   opacity: 0;
 }
 
+.shadow{
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .outline-none{
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.blur{
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.invert{
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.filter{
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition{
@@ -1739,9 +1824,11 @@ select{
 .cross-modal{
   position: relative;
   display: block;
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1.75rem;
+  width: 1.75rem;
   cursor: pointer;
+  padding-top: 0.75rem;
+  padding-left: 2px;
 }
 
 .cross-modal::before, .cross-modal::after {
@@ -1750,7 +1837,7 @@ select{
   position: absolute;
   width: 25px;
   height: 2px;
-  background-color: #000;
+  background-color: #fff;
 }
 
 .cross-modal::before {

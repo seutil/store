@@ -265,7 +265,7 @@
 }
 
 .cross-modal {
-  @apply relative block cursor-pointer w-5 h-5
+  @apply relative block cursor-pointer w-7 h-7 pt-3 pl-[2px]
 }
 
 .cross-modal::before, .cross-modal::after {
@@ -274,7 +274,7 @@
   position: absolute;
   width: 25px;
   height: 2px;
-  background-color: #000;
+  background-color: #fff;
 }
 
 .cross-modal::before {
