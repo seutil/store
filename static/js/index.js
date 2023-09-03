@@ -63,9 +63,9 @@ function getFile(file, container) {
     `<div class="file">
         <i class="fa fa-times cross-file"></i>
         ${icon}
-        <span>
-          ${file.name}
-        </span>
+        <p class="max-w-[170px] inline-block">
+          <span class="truncate block">${file.name}</span>
+        </p>
   </div>
 `
   );
@@ -92,7 +92,7 @@ function transferImages(files, input) {
 }
 
 function deleteImg(e) {
-  e.preventDefault();
+  e.preventDefault();  
   if (e.target.classList.contains("cross-file")) {
     let parent = e.target.parentElement.parentElement;
     let array = Array.from(parent.children);

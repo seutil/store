@@ -17,10 +17,12 @@
     class="text-white font-basic relative h-full flex flex-col min-h-screen"
   >
     {% block modals %}
-    <div class="modal active" id="modal1">
+    <div class="modal" id="modal1">
       <form class="flex flex-col gap-3 text-myBlack" action="" method="POST">
-        <div class="self-end flex  w-10 h-10 absolute justify-center items-center top-0 -right-16 bg-gray-300 bg-opacity-40 rounded-md">
-            <span class="cross-modal"></span>
+        <div
+          class="self-end flex w-10 h-10 absolute justify-center items-center top-0 -right-16 bg-gray-300 bg-opacity-40 rounded-md"
+        >
+          <span class="cross-modal"></span>
         </div>
         {% csrf_token %}
         <div class="form-content">
@@ -179,9 +181,13 @@
     </div>
     <div class="modal" id="modal2">
       <form class="flex flex-col gap-3 text-myBlack" action="" method="POST">
-        <div class="self-end w-5 h-5">
+        <div
+          class="self-end flex w-10 h-10 absolute justify-center items-center top-0 -right-16 bg-gray-300 bg-opacity-40 rounded-md"
+        >
           <span class="cross-modal"></span>
         </div>
+        {% csrf_token %}
+        <p class="text-center text-xl font-bold">Заказать звонок</p>
         <label for="name_call">
           <b>Имя</b>
           <input
@@ -233,7 +239,7 @@
               >
             </div>
             <a
-              href="tel:89629538811"
+              href="#"
               class="text-xl text-basic modal-trigger"
               data-target="modal2"
               >Заказать звонок</a
@@ -793,7 +799,12 @@
               разоблачены. Идейные соображения высшего порядка, а также
               перспективное планирование играет
             </p>
-            <a href="#" class="btn-blue sm:mt-1"> Задать вопрос юристу </a>
+            <a
+              href="tel:89629538811"
+              class="text-xl text-basic modal-trigger"
+              data-target="modal2"
+              >Заказать звонок</a
+            >
           </div>
         </div>
       </div>

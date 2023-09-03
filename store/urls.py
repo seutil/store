@@ -19,11 +19,12 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 
-from lawyer.views import index
+from lawyer.views import index, create_problem
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('create_problem', create_problem, name='create_problem'),
     path('articles/', include('articles.urls', namespace='articles')),
     path('reviews/', include('reviews.urls', namespace='reviews')),
     path("__reload__/", include("django_browser_reload.urls")),

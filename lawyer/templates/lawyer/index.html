@@ -23,7 +23,8 @@
     <section class="section-form">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-center after:mx-auto">Расскажите нам о своей проблеме</h2>
-            <form action="" class="max-w-4xl mx-auto text-myBlack" method="post">
+            <form id="form-problem" class="max-w-4xl mx-auto text-myBlack" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <label for="name">
                         <b>Имя</b>
@@ -162,4 +163,5 @@
     {{block.super}}
     <script src="{% static 'js/index.js'%}"></script>
     <script src="{% static 'js/post_data.js'%}"></script>
+    <script src="{% static 'js/post_problem.js'%}"></script>
 {% endblock scripts %}

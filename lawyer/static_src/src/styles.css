@@ -243,7 +243,7 @@
   transform: translate(-50%, -50%);
   z-index: 101;
   background-color: #fff;
-  max-width: 448px;
+  min-width: 448px;
   padding: 50px;
   border-radius: 5px;
 }
