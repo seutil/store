@@ -5,10 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from articles.models import Article
 from reviews.models import Review
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 
 def index(request):
     context = {
@@ -36,8 +32,6 @@ def create_problem(request):
         problem_instance.save()
         # Получите загруженные файлы
         files = request.FILES.getlist('file_upload')
-        
-        logging.info(f'============================================{files}')
         # Для каждого файла создайте экземпляр модели File и свяжите его с Problem
         for uploaded_file in files:
             file_instance = File(name=uploaded_file.name, file=uploaded_file)
@@ -45,7 +39,7 @@ def create_problem(request):
             problem_instance.files.add(file_instance)
 
         # Возвращаем JSON-ответ, чтобы сообщить клиенту, что запрос был успешно обработан
-        return JsonResponse({'message': 'все ок'})
+        return JsonResponse({'status': '200'})
     else:
         # Возвращаем ошибку, если запрос не был POST
         return JsonResponse({'error': 'Метод запроса должен быть POST'}, status=400)

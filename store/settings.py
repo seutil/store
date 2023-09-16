@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'lawyer',
     'reviews',
     'django_browser_reload',
+    'tinymce'
 ]
 
 MIDDLEWARE = [

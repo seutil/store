@@ -211,7 +211,7 @@
 }
 
 .block-files {
-  @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-30 mt-5
+  @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative mt-5
 }
 .file {
   @apply relative text-center flex flex-col items-center justify-center p-20 h-28 border border-gray-400 border-opacity-40 bg-gray-300 bg-opacity-50 rounded-lg
@@ -243,7 +243,8 @@
   transform: translate(-50%, -50%);
   z-index: 101;
   background-color: #fff;
-  min-width: 448px;
+  max-width: 448px;
+  width: 96%;
   padding: 50px;
   border-radius: 5px;
 }
@@ -282,4 +283,13 @@
 }
 .cross-modal::after {
   transform: rotate(135deg);
+}
+.pagination {
+  @apply mb-10
+}
+.pagination-link {
+  @apply px-2.5 py-1 rounded duration-200 hover:bg-gray-200
+}
+.pagination-link.active {
+  @apply bg-basic text-white
 }

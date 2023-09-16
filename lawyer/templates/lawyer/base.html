@@ -56,7 +56,7 @@
             ></textarea>
           </label>
           <label class="text-center">
-            <b>Оцените нас</b>
+            <b class="block text-xl">Оцените нас</b>
             <div class="review-mark flex justify-center">
               <svg
                 class="cursor-pointer"
@@ -248,7 +248,7 @@
         </div>
       </div>
       <div
-        class="bg-black bg-opacity-40 absolute z-10 w-full top-[124px] sm:top-[60px] p-4 header__menu-container"
+        class="bg-black {% if request.path == '/' %}bg-opacity-40{% endif %} {% if request.path != '/' %}bg-opacity-90{% endif %} absolute z-10 w-full top-[124px] sm:top-[60px] p-4 header__menu-container"
       >
         <div class="flex justify-between container mx-auto overflow-hidden">
           <div class="header__logo w-14 md:w-20">
@@ -275,16 +275,13 @@
               </li>
               <li class="menu-item">
                 <a
-                  href="{% url 'articles:index' %}"
-                  class="{% if request.path == '/articles/' %}active{% endif %}"
-                  >О компании</a
-                >
+                  href="{% url 'articles:index' 1 %}"
+                  class="{% if '/articles/' in request.path %}active{% endif %}"
+                  >Новости</a>
               </li>
               <li class="menu-item"><a href="#">Услуги</a></li>
               <li class="menu-item"><a href="#">Практика</a></li>
-              <li class="menu-item"><a href="#">Отзывы</a></li>
               <li class="menu-item"><a href="#">Блог</a></li>
-              <li class="menu-item"><a href="#">Партнерам</a></li>
               <li class="menu-item"><a href="#">Контакты</a></li>
             </ul>
           </nav>
@@ -292,417 +289,7 @@
       </div>
     </header>
     {% block content %}
-    <main class="flex-grow">
-      <section class="section-header pt-[300px] lg:pt-[300px]">
-        <div class="container mx-auto relative z-10">
-          <div class="text-center max-w-[1090px] mx-auto">
-            <p class="text-xl text-md:text-3xl font-thin mb-2 uppercase">
-              Оказываем весь комплекс
-            </p>
-            <h1
-              class="text-basic text-center text-3xl sm:text-4xl md:text-[3.50rem] font-normal uppercase mb-2"
-            >
-              Юридических услуг
-            </h1>
-            <p class="text-base block md:text-lg mb-12">
-              Давно выяснено, что при оценке дизайна и композиции читаемый текст
-              мешает сосредоточиться. Lorem Ipsum используют потому, что тот
-              обеспечивает более или менее стандартное заполнение.
-            </p>
-            <a href="#" class="btn-blue mt-3 sm:mt-1">Наши услуги</a>
-          </div>
-        </div>
-      </section>
-      <section class="section-form">
-        <div class="container mx-auto px-4">
-          <h2 class="section-title text-center after:mx-auto">
-            Расскажите нам о своей проблеме
-          </h2>
-          <form action="" class="max-w-4xl mx-auto text-myBlack" method="post">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <label for="name">
-                <b>Имя</b>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  class="w-full border rounded py-2 px-3 transition-all focus:border-basic outline-none"
-                  placeholder="Имя"
-                />
-              </label>
-              <label for="email" class="text-myBlack">
-                <b>E-mail</b>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  class="w-full border rounded py-2 px-3 transition-all focus:border-basic outline-none"
-                  placeholder="E-mail"
-                />
-              </label>
-            </div>
-            <label for="description" class="mb-4">
-              <b>Описание проблемы</b>
-              <textarea
-                name="description"
-                class="w-full border rounded py-2 px-3 transition-all focus:border-basic outline-none"
-                placeholder="Напишите описание вашей проблемы"
-                id="description"
-              ></textarea>
-            </label>
-            <label
-              class="flex flex-col items-center justify-center relative w-full p-4 min-h-[100px] transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none mb-4"
-            >
-              <span class="flex items-center space-x-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
-                </svg>
-                <span class="font-medium text-gray-600">
-                  Перетащите сюда свои файлы, или
-                  <span class="text-basic">обзор</span>
-                </span>
-              </span>
-              <input
-                type="file"
-                name="file_upload"
-                accept=".png, .jpg, .jpeg, .doc, .docx, .pdf"
-                class="text-5xl opacity-0 absolute w-full h-full input-files cursor-pointer"
-                multiple
-              />
-              <div class="block-files text-myBlack"></div>
-            </label>
-            <button type="submit" class="btn-blue block mx-auto text-center">
-              Отправить
-            </button>
-          </form>
-        </div>
-      </section>
-      <section class="section-reviews py-20">
-        <div class="container mx-auto px-4">
-          <h2 class="section-title">Что о нас говорят клиенты</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="review">
-              <div class="review__author">
-                <div class="review__author-img">
-                  <img
-                    src="{% static 'images/author-review.png'%}"
-                    alt="author-review"
-                  />
-                </div>
-                <div>
-                  <p class="review__author-company">ООО “ИТ Консалтинг”</p>
-                  <p class="review__author-name">Логинова Анастасия</p>
-                  <div class="review__author-rating flex">
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          .cls-2 {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            fill: #4f8ff0;
-                            opacity: 0.8;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        class="cls-2"
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          .cls-2 {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            fill: #4f8ff0;
-                            opacity: 0.8;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        class="cls-2"
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          path {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            opacity: 0.8;
-                            fill: #fff;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          path {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            opacity: 0.8;
-                            fill: #fff;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          path {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            opacity: 0.8;
-                            fill: #fff;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <p class="review__text">
-                Многие думают, что Lorem Ipsum - взятый с потолка
-                псевдо-латинский набор слов, но это не совсем так. Его корни
-                уходят в один фрагмент классической латыни 45 года н.э., то есть
-                более двух тысячелетий назад. Ричард МакКлинток, профессор
-                латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из
-                самых странных слов ...
-              </p>
-            </div>
-            <div class="review">
-              <div class="review__author">
-                <div class="review__author-img ov">
-                  <img
-                    src="{% static 'images/author-review2.png'%}"
-                    alt="author-review"
-                  />
-                </div>
-                <div class="flex flex-col justify-start">
-                  <p class="review__author-company">АО “ПРОМАРШ”</p>
-                  <p class="review__author-name">Макаров Сергей</p>
-                  <div class="review__author-rating flex">
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          .cls-2 {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            fill: #4f8ff0;
-                            opacity: 0.8;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        class="cls-2"
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          .cls-2 {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            fill: #4f8ff0;
-                            opacity: 0.8;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        class="cls-2"
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          .cls-2 {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            fill: #4f8ff0;
-                            opacity: 0.8;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        class="cls-2"
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          path {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            opacity: 0.8;
-                            fill: #fff;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <style>
-                          path {
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke: #4f8ff0;
-                            opacity: 0.8;
-                            fill: #fff;
-                          }
-                        </style>
-                      </defs>
-                      <path
-                        d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <p class="review__text">
-                Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка
-                не хотите какой-нибудь шутки, скрытой в середине абзаца. Также
-                все другие известные генераторы Lorem Ipsum используют один и
-                тот же текст, который они просто повторяют, пока не достигнут
-                нужный объём.
-              </p>
-            </div>
-          </div>
-          <div class="flex gap-4 items-center">
-            <a href="#" class="btn-blue mt-3 sm:mt-1">Все отзывы</a>
-            <a
-              href="#"
-              class="btn-gray modal-trigger mt-3 sm:mt-1"
-              data-target="modal1"
-              >Написать отзыв</a
-            >
-          </div>
-        </div>
-      </section>
-      <section class="section-news">
-        <div class="container mx-auto px-4">
-          <h2 class="section-title text-center after:mx-auto">
-            Полезные материалы
-          </h2>
-          <p class="text-center max-w-[920px] text-base mx-auto mt-6 mb-12">
-            Давно выяснено, что при оценке дизайна и композиции читаемый текст
-            мешает сосредоточиться. Lorem Ipsum используют потому, что тот
-            обеспечивает более или менее стандартное заполнение шаблона
-          </p>
-          <div class="swiper">
-            <div class="swiper-wrapper">
-              {% for new in news %}
-              <div class="swiper-slide">
-                <a href="#" class="news-block">
-                  <div class="news-img">
-                    <img src="{{new.image_src}}" alt="" />
-                  </div>
-                  <div class="news-content">
-                    <p class="news-title">{{new.title}}</p>
-                    <p class="news-date">{{new.date}}</p>
-                    <p class="news-text">{{new.text}}</p>
-                  </div>
-                </a>
-              </div>
-              {% endfor %}
-            </div>
-            <div
-              class="swiper-pagination swiper-pagination-bullets-dynamic"
-            ></div>
-          </div>
-          <div class="text-center mt-7">
-            <a href="#" class="btn-blue sm:mt-1"> Все новости </a>
-          </div>
-        </div>
-      </section>
-    </main>
+    
     {% endblock content %}
     <footer class="footer bg-myBlack pt-20 pb-24 mt-auto">
       <div class="container mx-auto px-4">
@@ -770,10 +357,12 @@
             <ul class="footer__menu-list flex flex-col gap-y-4">
               <li><a class="uppercase text-sm" href="#">Услуги</a></li>
               <li><a class="uppercase text-sm" href="#">О компании</a></li>
-              <li><a class="uppercase text-sm" href="#">Сертификаты</a></li>
               <li><a class="uppercase text-sm" href="#">Отзывы</a></li>
               <li>
-                <a class="uppercase text-sm" href="#">Полезные материалы</a>
+                <a
+                  href="{% url 'articles:index' 1 %}"
+                  class="{% if '/articles/' in request.path %}active{% endif %}"
+                  >Новости</a>
               </li>
             </ul>
           </div>
@@ -812,6 +401,7 @@
     {% block scripts %}
     <script src="{% static 'js/swiper.min.js'%}"></script>
     <script src="{% static 'js/jquery-3.7.0.js'%}"></script>
+    <script src="{% static 'js/call_modal.js'%}"></script>
     {% endblock scripts %}
   </body>
 </html>

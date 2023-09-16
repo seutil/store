@@ -1,0 +1,39 @@
+{% extends 'lawyer/base.html' %} {% load static tailwind_tags %} {% load static
+%} {% block content %}
+<main>
+  <div class="container mx-auto px-4 pt-[200px]">
+    <h2 class="section-title text-center after:mx-auto">Полезные материалы</h2>
+    <div class="grid max-w-6xl mx-auto grid-cols-2 gap-5">
+      {% for new in news %}
+      <div class="">
+        <a href="#" class="news-block">
+          <div class="news-img">
+            <img src="/media/{{new.image}}" alt="" />
+          </div>
+          <div class="news-content">
+            <p class="news-title text-black">{{new.name}}</p>
+            <p class="news-date">{{new.date_create}}</p>
+            <p class="news-text text-black">{{new.short_description}}</p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <nav class="pagination text-black">
+      <ul class="pagination-list flex gap-2 justify-center">
+          <li class="pagination-item"><a class="pagination-link prev {% if not news.has_previous%}text-gray-400{% endif %}" href="{% if news.has_previous%} {% url 'articles:index' news.previous_page_number %} {% else %} # {% endif %}">«</a></li>
+          {% for page in news.paginator.page_range %}
+          <li class="pagination-item">
+            <a class="pagination-link {% if news.number == page %} active {% endif %}" href="{% url "articles:index" page %}">{{page}}</a>
+          </li>
+          {% endfor %}
+          <li class="pagination-item"><a class="pagination-link next {% if not news.has_next%}text-gray-400{% endif %}" href="{% if news.has_next%} {% url 'articles:index' news.next_page_number %} {% else %} # {% endif %}"">»</a></li>
+      </ul>
+  </nav>
+  </div>
+</main>
+{% endblock content %}
+{% block scripts %}
+    {{block.super}}
+    <script src="{% static 'js/pagination.js'%}"></script>
+{% endblock scripts %}

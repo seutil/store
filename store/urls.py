@@ -28,6 +28,7 @@ urlpatterns = [
     path('articles/', include('articles.urls', namespace='articles')),
     path('reviews/', include('reviews.urls', namespace='reviews')),
     path("__reload__/", include("django_browser_reload.urls")),
+    path('tinymce/', include('tinymce.urls')),
 ]
 
 if settings.DEBUG:

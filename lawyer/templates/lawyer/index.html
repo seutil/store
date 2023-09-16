@@ -4,7 +4,7 @@
 
 {% block content %}
 <main>
-    <section class="section-header pt-[300px] lg:pt-[300px]">
+    <section class="section-header pt-[300px]">
         <div class="container mx-auto relative z-10">
             <div class="text-center max-w-[1090px] mx-auto">
                 <p class="text-xl text-md:text-3xl font-thin mb-2 uppercase">Оказываем весь комплекс</p>
@@ -25,18 +25,28 @@
             <h2 class="section-title text-center after:mx-auto">Расскажите нам о своей проблеме</h2>
             <form id="form-problem" class="max-w-4xl mx-auto text-myBlack" enctype="multipart/form-data" method="post">
                 {% csrf_token %}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="grid grid-cols-2 gap-4 mb-4">
                     <label for="name">
-                        <b>Имя</b>
+                        <b>Имя<sup class="text-red-600">*</sup></b>
                         <input id="name" name="name" type="text" class="w-full border rounded py-2 px-3 transition-all focus:border-basic outline-none" placeholder="Имя">
                     </label>
-                    <label for="email" class="text-myBlack">
-                        <b>E-mail</b>
+                    <label for="phone">
+                        <b>Номер телефона</b>
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          class="w-full border rounded py-2 px-3 transition-all focus:border-basic outline-none"
+                          placeholder="Номер телефона"
+                        />
+                      </label>
+                    <label for="email" class="text-myBlack col-span-2">
+                        <b>E-mail<sup class="text-red-600">*</sup></b>
                         <input id="email" name="email" type="email" class="w-full border rounded py-2 px-3 transition-all focus:border-basic outline-none" placeholder="E-mail">
                     </label>
                 </div>
                 <label for="description" class="mb-4">
-                    <b>Описание проблемы</b>
+                    <b>Описание проблемы<sup class="text-red-600">*</sup></b>
                     <textarea name="description" class="w-full border rounded py-2 px-3 transition-all focus:border-basic outline-none" placeholder="Напишите описание вашей проблемы" id="description"></textarea>
                 </label>
                 <label
@@ -142,7 +152,7 @@
                             <div class="news-content">
                                 <p class="news-title">{{new.name}}</p>
                                 <p class="news-date">{{new.date_create}}</p>
-                                <p class="news-text">{{new.description}}</p>
+                                <p class="news-text">{{new.short_description}}</p>
                             </div>
                         </a>
                     </div>
@@ -151,7 +161,7 @@
                 <div class="swiper-pagination swiper-pagination-bullets-dynamic"></div>
             </div>
             <div class="text-center mt-7">
-                <a href="#" class="btn-blue sm:mt-1">
+                <a href="{% url 'articles:index' 1 %}" class="btn-blue sm:mt-1">
                     Все новости
                 </a>
             </div>

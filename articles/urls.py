@@ -4,5 +4,5 @@ from articles.views import render_articles
 app_name = 'articles'
 
 urlpatterns = [
-    path('', render_articles, name='index')
+    path('page_articles/<int:page_number>', render_articles, name='index')
 ]
