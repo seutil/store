@@ -13,3 +13,10 @@ def render_articles(request, page_number=1):
         'news': articles_pagintor
     }
     return render(request, 'articles/articles.html', context)
+
+def article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    context = {
+        'article': article
+    }
+    return render(request, 'articles/article.html', context)

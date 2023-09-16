@@ -6,7 +6,7 @@
     <div class="grid max-w-6xl mx-auto grid-cols-2 gap-5">
       {% for new in news %}
       <div class="">
-        <a href="#" class="news-block">
+        <a href="{% url "articles:article" new.id %}" class="news-block">
           <div class="news-img">
             <img src="/media/{{new.image}}" alt="" />
           </div>
@@ -27,7 +27,7 @@
             <a class="pagination-link {% if news.number == page %} active {% endif %}" href="{% url "articles:index" page %}">{{page}}</a>
           </li>
           {% endfor %}
-          <li class="pagination-item"><a class="pagination-link next {% if not news.has_next%}text-gray-400{% endif %}" href="{% if news.has_next%} {% url 'articles:index' news.next_page_number %} {% else %} # {% endif %}"">»</a></li>
+          <li class="pagination-item"><a class="pagination-link next {% if not news.has_next%}text-gray-400{% endif %}" href="{% if news.has_next%} {% url 'articles:index' news.next_page_number %} {% else %} # {% endif %}">»</a></li>
       </ul>
   </nav>
   </div>

@@ -4,7 +4,10 @@ from lawyer.models import Problem, File
 from django.views.decorators.csrf import csrf_exempt
 from articles.models import Article
 from reviews.models import Review
-
+from django.core.mail import send_mail
+from django.http import JsonResponse
+import json
+from django.conf import settings
 
 def index(request):
     context = {
@@ -43,3 +46,16 @@ def create_problem(request):
     else:
         # Возвращаем ошибку, если запрос не был POST
         return JsonResponse({'error': 'Метод запроса должен быть POST'}, status=400)
+
+@csrf_exempt
+def send_mail_order_call(request):
+    data = json.loads(request.body)
+    subject = 'Order call'
+    message = f"Александр, Вы получили заказ на звонок от {data.get('name')}, номер телефона: {data.get('phone')}"
+    from_email = settings.EMAIL_HOST_USER
+    recipient_list = [f"{data.get('email')}"]
+    print(f"{data.get('email')}")
+    send_mail(subject, message, from_email, recipient_list)
+
+    response_data = {'message': 'Заказ на звонок успешно отправлен'}
+    return JsonResponse(response_data, status=200)

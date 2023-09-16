@@ -3,6 +3,15 @@
 {% load static %}
 
 {% block content %}
+<div class="modal" id="modal3">
+    <div class="flex flex-col justify-center gap-3 text-myBlack modal-content items-center">
+        <div class="self-end flex w-10 h-10 absolute justify-center items-center top-0 -right-16 bg-gray-300 bg-opacity-40 rounded-md">
+            <span class="cross-modal"></span>
+        </div>
+        <div class="w-20 h-20 rounded-full border-2 border-green-500 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px" height="30px" fill="rgb(34 197 94)"><path d="M 26.980469 5.9902344 A 1.0001 1.0001 0 0 0 26.292969 6.2929688 L 11 21.585938 L 4.7070312 15.292969 A 1.0001 1.0001 0 1 0 3.2929688 16.707031 L 10.292969 23.707031 A 1.0001 1.0001 0 0 0 11.707031 23.707031 L 27.707031 7.7070312 A 1.0001 1.0001 0 0 0 26.980469 5.9902344 z"/></svg></div>
+        <p class="text-base">Заявление успешно отправлено!</p>
+    </div>
+  </div>
 <main>
     <section class="section-header pt-[300px]">
         <div class="container mx-auto relative z-10">
@@ -96,16 +105,13 @@
                                                         {% if review.rating >= forloop.counter %}
                                                             <svg viewBox="0 0 24 24" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
                                                                 <defs>
-                                                                <style>.cls-2{stroke-linecap:round;stroke-linejoin:round; stroke: #4F8FF0; fill: #4F8FF0; opacity: 0.8;}</style>
+                                                                <style></style>
                                                                 </defs>
-                                                                    <path class="cls-2" d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"/>
+                                                                    <path class="star-fill star" d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"/>
                                                             </svg>
                                                         {% else %}
                                                             <svg viewBox="0 0 24 24" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
-                                                                <defs>
-                                                                <style> path{stroke-linecap:round;stroke-linejoin:round; stroke: #4F8FF0; opacity: 0.8; fill: #fff;}</style>
-                                                                </defs>
-                                                                    <path d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"/>
+                                                                    <path class="star-not-fill star" d="M12.48,5.35l1.37,4.22h4.43a.51.51,0,0,1,.3.92L15,13.09l1.37,4.21a.51.51,0,0,1-.79.57L12,15.27l-3.58,2.6a.51.51,0,0,1-.79-.57L9,13.09l-3.58-2.6a.51.51,0,0,1,.3-.92h4.43l1.37-4.22A.5.5,0,0,1,12.48,5.35Z"/>
                                                             </svg>
                                                         {% endif %}
                                                     {% endfor %}
@@ -145,7 +151,7 @@
                 <div class="swiper-wrapper">
                     {% for new in news %}
                     <div class="swiper-slide">
-                        <a href="#" class="news-block">
+                        <a href="{% url "articles:article" new.id %}" class="news-block">
                             <div class="news-img ">
                                 <img src="/media/{{new.image}}" alt="">
                             </div>

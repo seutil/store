@@ -1,40 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&display=swap");
 @font-face {
-  font-family: 'Icons';
-  src: local('Icons'),
-	   url('/static/fonts/fontawesome-webfont.woff2') format('woff2'), 
-	   url('/static/fonts/fontawesome-webfont.woff') format('woff'),
-	   url('/static/fonts/fontawesome-webfont.ttf') format('ttf'),
-	   url('/static/fonts/fontawesome-webfont.eot') format('eot'),
-	   url('/static/fonts/FontAwesome.otf') format('ttf');
+  font-family: "Icons";
+  src: local("Icons"),
+    url("/static/fonts/fontawesome-webfont.woff2") format("woff2"),
+    url("/static/fonts/fontawesome-webfont.woff") format("woff"),
+    url("/static/fonts/fontawesome-webfont.ttf") format("ttf"),
+    url("/static/fonts/fontawesome-webfont.eot") format("eot"),
+    url("/static/fonts/FontAwesome.otf") format("ttf");
 }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .header__contacts a {
-  @apply relative pl-[28px] before:inline-block before:absolute before:w-5 before:h-5 before:top-[3px] before:left-0 before:bg-cover before:bg-no-repeat
+  @apply relative pl-[28px] before:inline-block before:absolute before:w-5 before:h-5 before:top-[3px] before:left-0 before:bg-cover before:bg-no-repeat;
 }
 
 .tel {
   @apply before:bg-[url('/static/images/tel.svg')];
 }
 .email {
-  @apply before:bg-[url('/static/images/email.svg')]
+  @apply before:bg-[url('/static/images/email.svg')];
 }
 
-.header__menu-list, .footer__menu-list {
+.header__menu-list,
+.footer__menu-list {
   .active {
-    @apply text-basic
+    @apply text-basic;
   }
 }
 
 #check {
-  @apply hidden 
+  @apply hidden;
 }
 
 .check div {
-  @apply hidden items-center cursor-pointer relative z-10 w-[26px] h-[26px]
+  @apply hidden items-center cursor-pointer relative z-10 w-[26px] h-[26px];
 }
 
 .check div span,
@@ -51,10 +52,10 @@
 }
 
 .check div span {
-  @apply before:top-[-8px]
+  @apply before:top-[-8px];
 }
 .check div span {
-  @apply after:top-[8px]
+  @apply after:top-[8px];
 }
 #check:checked ~ .check > div > span {
   transform: rotate(45deg);
@@ -70,93 +71,92 @@
 
 @media screen and (max-width: 900px) {
   .header {
-    @apply relative z-50
+    @apply relative z-50;
   }
   .header__menu {
     visibility: hidden;
-    @apply block fixed transition-all duration-700 ease-in -right-full w-0 list-none text-center z-40 bg-myBlack h-[100vh] p-4 
-  } 
+    @apply block fixed transition-all duration-700 ease-in -right-full w-0 list-none text-center z-40 bg-myBlack h-[100vh] p-4;
+  }
   .header__menu-list {
-    @apply flex flex-col justify-start items-start
+    @apply flex flex-col justify-start items-start;
   }
   #check:checked ~ .header__menu {
-    @apply right-1/2 -mr-[50%] visible w-full p-4 overflow-hidden
+    @apply right-1/2 -mr-[50%] visible w-full p-4 overflow-hidden;
   }
   .check div {
-    @apply flex items-center relative z-50
+    @apply flex items-center relative z-50;
   }
 }
 
 .section-header {
-  @apply bg-[url('/static/images/bg-header.jpg')] bg-cover bg-no-repeat bg-center h-[100vh] relative after:absolute after:h-full after:w-full after:bg-stone-900 after:bg-opacity-60 after:top-0
+  @apply bg-[url('/static/images/bg-header.jpg')] bg-cover bg-no-repeat bg-center h-[100vh] relative after:absolute after:h-full after:w-full after:bg-stone-900 after:bg-opacity-60 after:top-0;
 }
 
 .section-services {
   background-color: #f7f7f7;
-  @apply py-20
+  @apply py-20;
 }
 
 .service-card {
-  @apply pt-[100px] px-8 pb-[59px] bg-white relative before:absolute before:block before:bg-[url('/static/images/service.svg')] before:w-8 before:h-8 before:bg-no-repeat before:top-[40px] before:left-1/2 before:mr-[-50%] before:-translate-x-1/2 before:translate-y-1/2 transition duration-300 hover:bg-basic hover:text-white
+  @apply pt-[100px] px-8 pb-[59px] bg-white relative before:absolute before:block before:bg-[url('/static/images/service.svg')] before:w-8 before:h-8 before:bg-no-repeat before:top-[40px] before:left-1/2 before:mr-[-50%] before:-translate-x-1/2 before:translate-y-1/2 transition duration-300 hover:bg-basic hover:text-white;
 }
 
 .service-card:hover::before {
-  @apply fill-white
+  @apply fill-white;
 }
 
 .service-card__title {
-  @apply font-extrabold text-xl
+  @apply font-extrabold text-xl;
 }
 
 .service-card__text {
-  @apply text-base
+  @apply text-base;
 }
 
 .section-reviews {
-  @apply bg-[url('/static/images/reviews.jpg')] bg-no-repeat bg-cover bg-center
+  @apply bg-[url('/static/images/reviews.jpg')] bg-no-repeat bg-cover bg-center;
 }
 
 .review {
-  @apply p-8 text-myBlack shadow-2xl bg-white 
+  @apply p-8 text-myBlack shadow-2xl bg-white;
 }
 
 .review__author {
-  @apply flex gap-x-6 items-center relative after:absolute after:right-0 after:bg-[url('/static/images/feather.png')] after:bg-no-repeat after:bg-center after:block after:w-[55px] after:h-[55px] mb-4
+  @apply flex gap-x-6 items-center relative after:absolute after:right-0 after:bg-[url('/static/images/feather.png')] after:bg-no-repeat after:bg-center after:block after:w-[55px] after:h-[55px] mb-4;
 }
 
 .review__author-comapany {
-  @apply text-sm font-light
+  @apply text-sm font-light;
 }
 
 .review__author-name {
-  @apply font-extrabold text-xl
+  @apply font-extrabold text-xl;
 }
 
 .section-news {
-  @apply text-myBlack py-16
+  @apply text-myBlack py-16;
 }
 
 .news-block:hover .news-img:before {
-  @apply bg-basic bg-opacity-40
+  @apply bg-basic bg-opacity-40;
 }
 .news-block:hover .news-title {
-  @apply text-basic 
+  @apply text-basic;
 }
 .news-img {
-  @apply w-full mb-6 relative before:transition before:duration-300 before:w-full before:h-full before:absolute
+  @apply w-full mb-6 relative before:transition before:duration-300 before:w-full before:h-full before:absolute;
 }
 
 .news-img img {
-  @apply block h-[400px] w-full object-cover
-
+  @apply block max-h-[400px] w-full object-cover aspect-1;
 }
 
 .news-title {
-  @apply font-bold text-base transition duration-300
+  @apply font-bold text-base transition duration-300;
 }
 
 .swiper-pagination {
-  @apply mt-16 relative
+  @apply mt-16 relative;
 }
 
 .swiper-pagination-bullet {
@@ -174,57 +174,57 @@
 }
 
 .swiper-pagination-bullet-active {
-  @apply bg-basic
+  @apply bg-basic;
 }
 
 .news-date {
-  @apply text-gray-400 my-4
+  @apply text-gray-400 my-4;
 }
 .news-text {
-  @apply text-sm
+  @apply text-sm;
 }
 
 .footer__lawyer {
-  @apply flex items-center gap-6
+  @apply flex items-center gap-6;
 }
 
-.footer__menu a, .header__menu a{
-  @apply hover:text-basic transition-all duration-300
+.footer__menu a,
+.header__menu a {
+  @apply hover:text-basic transition-all duration-300;
 }
 
 @layer components {
   .btn-blue {
-    @apply bg-basic inline-block font-bold py-3 px-6 border-[2px] border-transparent uppercase transition-all duration-300 hover:text-basic hover:bg-white hover:border-basic hover:border-[2px] text-center text-white
+    @apply bg-basic inline-block font-bold py-3 px-6 border-[2px] border-transparent uppercase transition-all duration-300 hover:text-basic hover:bg-white hover:border-basic hover:border-[2px] text-center text-white;
   }
   .btn-gray {
-    @apply bg-gray-300 text-myBlack inline-block border-[2px] border-transparent font-extrabold py-3 px-6 uppercase transition-all duration-300 hover:bg-white hover:border-gray-300 hover:border-[2px] text-center
+    @apply bg-gray-300 text-myBlack inline-block border-[2px] border-transparent font-extrabold py-3 px-6 uppercase transition-all duration-300 hover:bg-white hover:border-gray-300 hover:border-[2px] text-center;
   }
-  
-} 
+}
 
 .section-title {
-  @apply text-myBlack relative mb-12 uppercase font-extrabold text-[1.75rem] after:block after:w-12 after:h-[3px] after:bg-basic after:mt-2.5
+  @apply text-myBlack relative mb-12 uppercase font-extrabold text-[1.75rem] after:block after:w-12 after:h-[3px] after:bg-basic after:mt-2.5;
 }
 
 .section-form {
-  @apply py-16
+  @apply py-16;
 }
 
 .block-files {
-  @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative mt-5
+  @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative mt-5;
 }
 .file {
-  @apply relative text-center flex flex-col items-center justify-center p-20 h-28 border border-gray-400 border-opacity-40 bg-gray-300 bg-opacity-50 rounded-lg
+  @apply relative text-center flex flex-col items-center justify-center p-20 h-28 border border-gray-400 border-opacity-40 bg-gray-300 bg-opacity-50 rounded-lg;
 }
 
 .file .fa-times:before {
-  content: '\f00d';
-  font-family: 'FontAwesome';
+  content: "\f00d";
+  font-family: "FontAwesome";
   position: absolute;
   font-size: 16px;
   top: 5px;
   right: 10px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .file .fa-times:hover:before {
@@ -236,7 +236,8 @@
   display: none;
 }
 
-.modal form {
+.modal form,
+.modal .modal-content {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -261,16 +262,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
 }
 
 .cross-modal {
-  @apply relative block cursor-pointer w-7 h-7 pt-3 pl-[2px]
+  @apply relative block cursor-pointer w-7 h-7 pt-3 pl-[2px];
 }
 
-.cross-modal::before, .cross-modal::after {
-  content: '';
+.cross-modal::before,
+.cross-modal::after {
+  content: "";
   display: block;
   position: absolute;
   width: 25px;
@@ -285,11 +287,28 @@
   transform: rotate(135deg);
 }
 .pagination {
-  @apply mb-10
+  @apply mb-10;
 }
 .pagination-link {
-  @apply px-2.5 py-1 rounded duration-200 hover:bg-gray-200
+  @apply px-2.5 py-1 rounded duration-200 hover:bg-gray-200;
 }
 .pagination-link.active {
-  @apply bg-basic text-white
+  @apply bg-basic text-white;
+}
+
+.star path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #4f8ff0;
+  opacity: 0.8;
+  fill: #fff;
+}
+
+.star-fill {
+  fill: #4f8ff0;
+}
+
+.star-not-fill {
+  stroke: #4F8FF0;
+  fill: #fff
 }
