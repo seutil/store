@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.http import JsonResponse
 import json
 from django.conf import settings
+from django.core.mail import EmailMessage
 
 def index(request):
     context = {
@@ -20,6 +21,7 @@ def index(request):
         "lawyer/index.html",
         context
     )
+
 
 @csrf_exempt
 def create_problem(request):
@@ -52,10 +54,12 @@ def send_mail_order_call(request):
     data = json.loads(request.body)
     subject = 'Order call'
     message = f"Александр, Вы получили заказ на звонок от {data.get('name')}, номер телефона: {data.get('phone')}"
-    from_email = settings.EMAIL_HOST_USER
-    recipient_list = [f"{data.get('email')}"]
-    print(f"{data.get('email')}")
-    send_mail(subject, message, from_email, recipient_list)
+    from_email = settings.EMAIL_HOST_USER  # Используем адрес из настроек
+    recipient_list = [settings.EMAIL_HOST_USER]
+    reply_to = [data.get('email')]  # Используем адрес из формы как "Reply-To" адрес
+
+    email = EmailMessage(subject, message, from_email, recipient_list, reply_to=reply_to)
+    email.send()
 
     response_data = {'message': 'Заказ на звонок успешно отправлен'}
     return JsonResponse(response_data, status=200)

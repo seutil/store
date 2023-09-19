@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'lawyer',
     'reviews',
     'django_browser_reload',
-    'tinymce'
+    'tinymce',
+    'services'
 ]
 
 MIDDLEWARE = [
@@ -147,8 +148,7 @@ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 #email
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'tolyan22888888@yandex.ru'
 EMAIL_HOST_PASSWORD = 'death123$$$'

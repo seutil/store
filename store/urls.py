@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from lawyer.views import index, create_problem, send_mail_order_call
+from services.views import render_services
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,9 +28,10 @@ urlpatterns = [
     path('create_problem', create_problem, name='create_problem'),
     path('articles/', include('articles.urls', namespace='articles')),
     path('reviews/', include('reviews.urls', namespace='reviews')),
+    path('order_call/', send_mail_order_call, name="order_call"),
+    path('services/', render_services, name="services"),
     path("__reload__/", include("django_browser_reload.urls")),
     path('tinymce/', include('tinymce.urls')),
-    path('order_call/', send_mail_order_call, name="order_call")
 ]
 
 if settings.DEBUG:

@@ -89,7 +89,7 @@
 }
 
 .section-header {
-  @apply bg-[url('/static/images/bg-header.jpg')] bg-cover bg-no-repeat bg-center h-[100vh] relative after:absolute after:h-full after:w-full after:bg-stone-900 after:bg-opacity-60 after:top-0;
+  @apply bg-[url('/static/images/bg-header.jpg')] bg-fixed bg-cover bg-no-repeat bg-center h-[100vh] relative after:absolute after:h-full after:w-full after:bg-stone-900 after:bg-opacity-60 after:top-0;
 }
 
 .section-services {
@@ -311,4 +311,8 @@
 .star-not-fill {
   stroke: #4F8FF0;
   fill: #fff
+}
+
+.card-service {
+  @apply text-myBlack
 }
