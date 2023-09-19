@@ -150,5 +150,3 @@ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tolyan22888888@yandex.ru'
-EMAIL_HOST_PASSWORD = 'death123$$$'
